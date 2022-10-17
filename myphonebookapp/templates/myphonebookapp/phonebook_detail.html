@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phonebook_detail</title>
+</head>
+<body>
+<h1>Название задачи: {{ phonebook.name }}</h1>
+<p><strong>Описание:</strong> {{ phonebook.description }}</p>
+<p><strong>Дата создания:</strong> {{ phonebook.created_at }}</p>
+<p><strong>Дата выполнения:</strong> {{ phonebook.resolved_at }}</p>
+<p><strong>Статус:</strong>
+    {% if phonebook.status %}
+      Выполнено
+    {% else %}
+      Не выполнено
+    {% endif %}
+</p>
+<a href="{% url 'phonebook-list' %}"> Назад </a>
+</body>
+</html>
