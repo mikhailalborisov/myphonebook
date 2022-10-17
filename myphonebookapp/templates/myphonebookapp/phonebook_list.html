@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phonebook_list</title>
+</head>
+<body>
+<h1>Список задач</h1>
+<a href="{% url 'phonebook-add' %}">Создать задачу</a>
+{% if phonebook_list %}
+<ul>
+{% for phonebook in phonebook_list %}
+<li>
+<a href="{{ phonebook.get_absolute_url }}">
+         {{ phonebook.first_name }} {{ phonebook.last_name }}</a>
+         ({{phonebook.phone}})
+         [{{ phonebook.favourites|yesno:'Избранное,Не избранное'}}]
+    <a href="{{ phonebook.get_absolute_url }}/update">
+        Update</a>
+    <a href="{{ phonebook.get_absolute_url }}/delete">
+        Delete</a>
+</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Задач нет</p>
+{% endif %}
+</body>
+</html>
